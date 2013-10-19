@@ -1,5 +1,4 @@
 
-
 #define NUM_NOTES 13
 
 int sensorPin = 13;              // 220 or 1k resistor connected to this pin
@@ -7,7 +6,7 @@ long result = 0;
 
 const int noteON = 144;//144 = 10010000 in binary, note on command
 const int noteOFF = 128;//128 = 10000000 in binary, note off command
-const int light_threshold = 10;
+const int light_threshold;
 int velocity = 100;//velocity of MIDI notes, must be between 0 and 127
 int notes[NUM_NOTES] = {48,49,50,51,52,53,54,55,56,57,58,59,60};
 boolean on[NUM_NOTES];
@@ -19,6 +18,7 @@ void setup()                    // run once, when the sketch starts
     on[i]=0;
   }
    Serial.begin(31250);
+  light_threshold = setThreshold();
    //Serial.begin(4800);
   
 }
@@ -72,4 +72,19 @@ long RCtime(int sensPin){
 
    return result;                   // report results   
 }   
+
+int setThreshold ()
+{
+  int max = 0;
+  for (int i = 2; i < 14; i++)
+  {
+    int time = RCtime(i);
+    if (time > max)
+    {
+      max = time;
+    }
+  }
+  
+  return max * 1.1;
+}
 
