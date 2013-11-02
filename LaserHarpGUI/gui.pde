@@ -122,6 +122,10 @@ public void button1_click1(GButton source, GEvent event) { //_CODE_:button1:2516
   println("button1 - GButton event occured " + System.currentTimeMillis()%10000000 );
 } //_CODE_:button1:251652:
 
+public void button2_click1(GButton source, GEvent event) { //_CODE_:button2:900967:
+  println("button2 - GButton event occured " + System.currentTimeMillis()%10000000 );
+} //_CODE_:button2:900967:
+
 
 
 // Create all the GUI controls. 
@@ -250,8 +254,11 @@ public void createGUI(){
   textfield26.setOpaque(true);
   textfield26.addEventHandler(this, "textfield26_change1");
   button1 = new GButton(this, 340, 540, 80, 30);
-  button1.setText("Calibrate");
+  button1.setText("Set");
   button1.addEventHandler(this, "button1_click1");
+  button2 = new GButton(this, 160, 540, 80, 30);
+  button2.setText("Get");
+  button2.addEventHandler(this, "button2_click1");
 }
 
 // Variable declarations 
@@ -296,4 +303,5 @@ GTextField textfield24;
 GTextField textfield25; 
 GTextField textfield26; 
 GButton button1; 
+GButton button2; 
 
