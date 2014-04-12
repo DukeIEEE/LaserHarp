@@ -33,7 +33,7 @@
  
  */
 
-void initializeHarp() {
+void initializeMIDI() {
   Serial.begin(57600);
 
   //Setup soft serial for MIDI control
